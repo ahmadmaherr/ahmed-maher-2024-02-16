@@ -1,28 +1,37 @@
-import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, JoinColumn  } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { User } from 'src/users/entities/user.entity';
-
 
 @Entity()
 export class Post {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   title: string;
 
-  @Column()
+  @Column({ type: 'varchar', length: 30 })
   content: string;
 
   @ManyToOne(() => User, (user) => user.posts)
   @JoinColumn({ name: 'authorId' }) // Specify the foreign key column name
   author: User;
 
-  @Column({ default: true })
+  @Column({ type: 'integer'})
   authorId: number; // This will store the foreign key
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
   createdAt: Date;
 
-  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP', onUpdate: 'CURRENT_TIMESTAMP' })
+  @Column({
+    type: 'timestamp',
+    default: () => 'CURRENT_TIMESTAMP',
+    onUpdate: 'CURRENT_TIMESTAMP',
+  })
   updatedAt: Date;
 }
