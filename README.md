@@ -24,7 +24,8 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+```API that allows users to create, read, update, and delete (CRUD) posts. Each post will have a title, content, author, and timestamp. You will also need to write unit and e2e tests for the API using Jest and Testcontainers. You will also need to use Docker and Docker Compose to containerize the application and the database.
+```
 
 ## Installation
 
@@ -32,17 +33,16 @@
 $ npm install
 ```
 
+## Building the app
+
+```bash
+docker compose build
+```
+
 ## Running the app
 
 ```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+docker compose up
 ```
 
 ## Test
@@ -58,16 +58,28 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## Support
+## enviroment variables
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+```bash
+DB_TYPE=postgres
+PG_USER=postgres
+PG_PASSWORD=postgres
+PG_DB=postgres
+PG_PORT=5432
+PG_HOST=db
 
-## Stay in touch
+JWT_SECRET=thisisasecret
+JWT_EXPIRES=3600m
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
 
-## License
+DB_ENTITIES=src/*/entities/*.entity.ts
+DB_SYNCRONIZE=true
+DB_LOGGING=true
+DB_MIGRATIONS_RUN=true
+DB_MIGRATIONS_DIR=migrations
 
-Nest is [MIT licensed](LICENSE).
+SALT_ROUNDS=10
+```
+
+
+
