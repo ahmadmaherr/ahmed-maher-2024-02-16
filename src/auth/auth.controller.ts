@@ -6,7 +6,7 @@ import {
     UnprocessableEntityException,
   } from '@nestjs/common';
   import { AuthService } from './auth.service';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '../users/users.service';
 import { AuthModel } from './models/auth.model';
 import { UserModel } from './models/user.model';
   

@@ -3,18 +3,16 @@ import { AuthService } from './auth.service';
 import { PassportStrategy } from '@nestjs/passport';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { JwtPayloadInterface } from './interfaces/jwt-payload.interface';
-import { User } from 'src/users/entities/user.entity';
-import { InjectConfig, ConfigService } from 'nestjs-config';
+import { User } from '../users/entities/user.entity';
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
   constructor(
     private readonly authService: AuthService,
-    @InjectConfig() config: ConfigService,
   ) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: config.get('jwt.secretOrPrivateKey'),
+      secretOrKey: process.env.JWT_SECRET
     });
   }
 

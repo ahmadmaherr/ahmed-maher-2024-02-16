@@ -1,6 +1,6 @@
 import { Injectable, BadRequestException } from '@nestjs/common';
-import { UsersService } from 'src/users/users.service';
-import { User } from 'src/users/entities/user.entity';
+import { UsersService } from '../users/users.service';
+import { User } from '../users/entities/user.entity';
 import { JwtPayloadInterface } from './interfaces/jwt-payload.interface';
 import { AuthModel } from './models/auth.model';
 import { JwtService } from '@nestjs/jwt';
