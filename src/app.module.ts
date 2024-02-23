@@ -5,8 +5,7 @@ import { PostsModule } from './posts/posts.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Post } from './posts/entities/post.entity';
 import { User } from './users/entities/user.entity';
-import { registerAs } from '@nestjs/config';
-import { UserController } from './users/users.controller';
+import { UsersController } from './users/users.controller';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
 
@@ -25,7 +24,7 @@ import { AuthModule } from './auth/auth.module';
       }),
       UsersModule,
       AuthModule],
-  controllers: [AppController, UserController],
+  controllers: [AppController, UsersController],
   providers: [AppService],
 })
 export class AppModule {}
