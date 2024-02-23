@@ -14,20 +14,25 @@ export class PostService {
     private postsRepository: Repository<Post>,
   ) {}
 
-  create(createPostDto: CreatePostDto, request: Request): Promise<Post> {
-    // const userId = request.user.id;
+  create(createPostDto: CreatePostDto, request: any): Promise<Post> {
+    const userId = request.user.id;
 
-    // const newPost: DeepPartial<Post> = {
-    //   ...createPostDto,
-    //   authorId: userId,
-    // }
+    console.log(userId)
+    console.log(request)
+    console.log(request.user)
 
-    // Save the new post entity to the database
+
+
+    const newPost: DeepPartial<Post> = {
+      ...createPostDto,
+      authorId: userId,
+    }
+
     const post: Post = new Post();
 
     post.title = createPostDto.title;
     post.content = createPostDto.content;
-    return this.postsRepository.save(createPostDto);
+    return this.postsRepository.save(newPost);
   }
 
   findAll(): Promise<Post[]> {
