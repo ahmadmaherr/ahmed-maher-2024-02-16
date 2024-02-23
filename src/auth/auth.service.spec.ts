@@ -6,11 +6,10 @@ import { TypeOrmModule } from "@nestjs/typeorm";
 import { ConfigModule, ConfigService } from "nestjs-config";
 
 import { AuthService } from "./auth.service";
-import { UsersModule } from "src/users/users.module";
-import { UsersService } from "src/users/users.service";
-import { User } from "src/users/entities/user.entity";
+import { UsersModule } from "../users/users.module";
+import { UsersService } from "../users/users.service";
 import { AuthModule } from "./auth.module";
-
+import { User } from "../users/entities/user.entity";
 describe("AuthService", () => {
   let app: INestApplication;
   let module: TestingModule;
@@ -57,7 +56,7 @@ describe("AuthService", () => {
     user = await userService.create({
       email: "email@email.com",
       password: "testtest",
-      name: "test",
+      username: "test",
       grant: 1,
     });
 
