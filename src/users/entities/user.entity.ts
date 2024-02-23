@@ -1,6 +1,6 @@
 // user.entity.ts
 import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
-import { Post } from 'src/posts/entities/post.entity';
+import { Post } from '../../posts/entities/post.entity';
 
 import { IsString, IsNumber, IsEmail } from "class-validator";
 

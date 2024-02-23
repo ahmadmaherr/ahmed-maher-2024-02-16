@@ -16,11 +16,11 @@ import {
   import { Roles } from "./roles.decorator";
   import { RolesGuard } from "./roles.guard";
   
-  import { UserModel } from "src/auth/models/user.model";
+  import { UserModel } from "../auth/models/user.model";
   import { User } from "./entities/user.entity";
   import { UsersService } from "./users.service";
   @Controller("users")
-  export class UserController {
+  export class UsersController {
     constructor(private readonly userService: UsersService) {}
     @Get("/profile")
     @UseGuards(AuthGuard("jwt"), RolesGuard)
@@ -50,8 +50,6 @@ import {
     }
   
     @Post()
-    @UseGuards(AuthGuard("jwt"), RolesGuard)
-    @Roles("admin")
     async addUser(
       @Body(new ValidationPipe()) userModel: UserModel
     ): Promise<User> {

@@ -3,10 +3,9 @@ import * as bcrypt from "bcrypt";
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository, DeleteResult } from "typeorm";
-import { ConfigService, InjectConfig } from "nestjs-config";
 
 import { User } from "./entities/user.entity";
-import { UserModel } from "src/auth/models/user.model";
+import { UserModel } from "../auth/models/user.model";
 
 @Injectable()
 export class UsersService {
@@ -14,9 +13,8 @@ export class UsersService {
 
   constructor(
     @InjectRepository(User) private readonly userRepository: Repository<User>,
-    @InjectConfig() private readonly config: ConfigService
   ) {
-    this.saltRounds = config.get("app.salt_rounds", 10);
+    this.saltRounds = parseInt(process.env.salt_rounds)
   }
 
   async create(user: UserModel): Promise<User> {
@@ -35,7 +33,7 @@ export class UsersService {
   async update(User: User, user: UserModel): Promise<User> {
     return await this.userRepository.save({
       ...User,
-      name: user.name,
+      name: user.username,
     });
   }
 

@@ -2,8 +2,8 @@ import { IsString, IsNumber, IsEmail } from "class-validator";
 
 export enum IGrant {
   ADMIN = 0,
-  TEACHER = 1,
-  STUDENT = 2,
+  EDITOR = 1,
+  READER = 2,
 }
 
 export class UserModel {
@@ -11,7 +11,7 @@ export class UserModel {
   email: string;
 
   @IsString()
-  name: string;
+  username: string;
 
   @IsString()
   password: string;
