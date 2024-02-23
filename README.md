@@ -24,7 +24,8 @@
 
 ## Description
 
-```API that allows users to create, read, update, and delete (CRUD) posts. Each post will have a title, content, author, and timestamp. You will also need to write unit and e2e tests for the API using Jest and Testcontainers. You will also need to use Docker and Docker Compose to containerize the application and the database.
+```bash
+API that allows users to create, read, update, and delete (CRUD) posts. Each post will have a title, content, author, and timestamp. You will also need to write unit and e2e tests for the API using Jest and Testcontainers. You will also need to use Docker and Docker Compose to containerize the application and the database.
 ```
 
 ## Installation
@@ -36,13 +37,13 @@ $ npm install
 ## Building the app
 
 ```bash
-docker compose build
+$ docker compose build
 ```
 
 ## Running the app
 
 ```bash
-docker compose up
+$ docker compose up
 ```
 
 ## Test
@@ -58,7 +59,7 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
-## enviroment variables
+## Enviroment Variables
 
 ```bash
 DB_TYPE=postgres
@@ -81,7 +82,7 @@ DB_MIGRATIONS_DIR=migrations
 SALT_ROUNDS=10
 ```
 
-## how to scale
+## How to Scale
 
 ```bash
 To scale a Nest.js application, especially a user service, to handle a large number of users (10,000 to 1 million), we need to consider various aspects of the application's architecture, infrastructure, and performance. Below are some general strategies that can help in scaling a basic Nest.js app serving a user service:
