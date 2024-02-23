@@ -13,6 +13,14 @@ services:
       - PG_DB=postgres
       - PG_PORT=5432
       - PG_HOST=db
+      - JWT_SECRET=thisisasecret
+      - JWT_EXPIRES=3600m
+      - DB_ENTITIES=src/*/entities/*.entity.ts
+      - DB_SYNCRONIZE=true
+      - DB_LOGGING=true
+      - DB_MIGRATIONS_RUN=true
+      - DB_MIGRATIONS_DIR=migrations
+      - SALT_ROUNDS=10
     depends_on:
       - db
   db:
